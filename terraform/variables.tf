@@ -46,3 +46,8 @@ variable "port_number" {
   default = ["22","3000","9090","9093","8080","80"]
   type = "list"
 }
+
+variable "owner" {
+    description = "Owner of the AMI"
+    default = "self"
+}
