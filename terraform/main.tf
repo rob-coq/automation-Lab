@@ -28,5 +28,6 @@ data "aws_ami" "packer_image" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
+  
+  owners = ["self"]
 }
