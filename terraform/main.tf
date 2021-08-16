@@ -29,5 +29,5 @@ data "aws_ami" "packer_image" {
     values = ["hvm"]
   }
   
-  owners = ["self"]
+  owners = ["${var.owner}"]
 }
