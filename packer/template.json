@@ -32,7 +32,7 @@
           "../ansible/roles/git",
           "../ansible/roles/mysql",
           "../ansible/roles/nginx",
-          "../ansible/roles/growlerfriday"
+          "../ansible/roles/growlerfriday",
           "../ansible/roles/security"
         ],
         "group_vars": "../ansible/group_vars"
