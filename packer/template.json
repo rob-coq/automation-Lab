@@ -16,7 +16,7 @@
         },
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "ami_name": "example-ami-packer",
+        "ami_name": "{{user `ami_name`}}",
         "force_deregister": true
     }],
     "_comment": "Running Ansible roles on the image",
