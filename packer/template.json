@@ -16,7 +16,17 @@
         },
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "ami_name": "{{user `ami_name`}}",
+        "ami_name": "Packer_ami",
+        "run_tags": {
+          "OS_Version": "Ubuntu",
+          "Release": "16.04",
+          "Env": "{{user `environment`}}"
+        },
+        "tags": {
+          "OS_Version": "Ubuntu",
+          "Release": "16.04",
+          "Env": "{{user `environment`}}"
+        },
         "force_deregister": true
     }],
     "_comment": "Running Ansible roles on the image",
