@@ -20,7 +20,6 @@
         "run_tags": {
           "OS_Version": "Ubuntu",
           "Release": "16.04",
-          "Env": "{{user `environment`}}"
         },
         "tags": {
           "OS_Version": "Ubuntu",
