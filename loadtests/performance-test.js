@@ -10,6 +10,6 @@ export let options = {
 };
 
 export default function () {
-  http.get('${__ENV.MY_HOSTNAME}/');
+  http.get(`http://${__ENV.MY_HOSTNAME}`);
   sleep(3);
 }
