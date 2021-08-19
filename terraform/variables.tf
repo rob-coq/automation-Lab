@@ -3,10 +3,10 @@ variable region {
     description = "AWS Region"
     default = "us-east-1"
 }
-variable aws_access {
+variable access_key {
     description = "AWS access key"
 }
-variable aws_secret {
+variable secret_key {
     description = "AWS secret key"
 }
 variable "stack" {
