@@ -44,7 +44,6 @@ pipeline {
                     sh "terraform init"
                     sh 'terraform plan -var \'owner=\'$owner\'\''
                     sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\''
-                    sh 'ami_id=$(terraform output ami_id)'
                 }
                 Dir('./terraform'){
                     sh 'terraform destroy -auto-approve'
