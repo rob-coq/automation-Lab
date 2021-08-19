@@ -13,7 +13,7 @@ pipeline {
         stage('Generate AMI') {
             steps {
                 dir('./packer'){
-                    sh 'ls -la; pwd; packer build -var \'environment=\'$env_dev\'\'  template.json'
+                    sh 'ls -la; pwd; packer build -var \'aws_access_key=\'$access_key\'\' -var \'aws_secret_key=\'$secret_key\'\' -var \'environment=\'$env_dev\'\'  template.json'
                 }
             }
         }
@@ -21,9 +21,12 @@ pipeline {
             steps {
                 dir('./terraform'){
                     sh "terraform init"
-                    sh 'terraform plan -var \'owner=\'$owner\'\''
-                    sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\''
-                    sh 'hostname=$(terraform output publicIp)'
+                    sh 'terraform plan -var \'owner=\'$owner\'\' -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
+                    sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\' -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
+                    
+                    script {
+                        MyVar = sh(script: 'terraform output publicIp', returnStdout: true).trim()
+                    }
                 }
             }
         }
@@ -34,7 +37,7 @@ pipeline {
                 sh 'sudo chmod +x setup_k6.sh'
                 sh 'sudo ./setup_k6.sh'
                 echo 'Running K6 performance tests...'
-                sh 'k6 run -e MY_HOSTNAME=\'$hostname\' loadtests/performance-test.js'
+                sh "k6 run -e MY_HOSTNAME='${MyVar}' --out influxdb=http://influxdb:8086/myk6db loadtests/performance-test.js"
             }
         }
 
@@ -42,11 +45,11 @@ pipeline {
             steps {
                 dir('./terraform-CD'){
                     sh "terraform init"
-                    sh 'terraform plan -var \'owner=\'$owner\'\''
-                    sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\''
+                    sh 'terraform plan -var \'owner=\'$owner\'\' -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
+                    sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\' -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
                 }
                 dir('./terraform'){
-                    sh 'terraform destroy -auto-approve'
+                    sh 'terraform destroy -auto-approve -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\'''
                 }
             }
         }
