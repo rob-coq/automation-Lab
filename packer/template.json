@@ -19,7 +19,7 @@
         "ami_name": "Packer_ami",
         "run_tags": {
           "OS_Version": "Ubuntu",
-          "Release": "16.04",
+          "Release": "16.04"
         },
         "tags": {
           "OS_Version": "Ubuntu",
