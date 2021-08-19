@@ -49,7 +49,7 @@ pipeline {
                     sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\' -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
                 }
                 dir('./terraform'){
-                    sh 'terraform destroy -auto-approve -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\'''
+                    sh 'terraform destroy -auto-approve -var \'access_key=\'$access_key\'\' -var \'secret_key=\'$secret_key\'\''
                 }
             }
         }
