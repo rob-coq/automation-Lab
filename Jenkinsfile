@@ -45,7 +45,7 @@ pipeline {
                     sh 'terraform plan -var \'owner=\'$owner\'\''
                     sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\''
                 }
-                Dir('./terraform'){
+                dir('./terraform'){
                     sh 'terraform destroy -auto-approve'
                 }
             }
