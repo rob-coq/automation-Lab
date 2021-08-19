@@ -6,8 +6,8 @@ pipeline {
         access_key = credentials('jenkins-aws-secret-access-key')
         secret_key = credentials('jenkins-aws-secret-key-id')
         owner = credentials('aws-owner')
-        env_dev = Dev
-        env_prod = Prod
+        env_dev = 'Dev'
+        env_prod = 'Prod'
     }
     stages {
         stage('Generate AMI') {
