@@ -3,7 +3,12 @@ variable region {
     description = "AWS Region"
     default = "us-east-1"
 }
-
+variable aws_access {
+    description = "AWS access key"
+}
+variable aws_secret {
+    description = "AWS secret key"
+}
 variable "stack" {
     description = "Name of the Stack"
     default = "terraform"
