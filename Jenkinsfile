@@ -3,8 +3,8 @@ pipeline {
     environment {
         terraform_version = '0.12.26'
         packer_version = '1.6.6'
-        access_key = credentials('jenkins-aws-secret-access-key')
-        secret_key = credentials('jenkins-aws-secret-key-id')
+        access_key = credentials('jenkins-aws-access-key-id')
+        secret_key = credentials('jenkins-aws-secret-access-key')
         owner = credentials('aws-owner')
         env_dev = 'Dev'
         env_prod = 'Prod'
