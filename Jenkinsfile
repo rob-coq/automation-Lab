@@ -23,7 +23,7 @@ pipeline {
                     sh "terraform init"
                     sh 'terraform plan -var \'owner=\'$owner\'\''
                     sh 'terraform apply -auto-approve -var \'owner=\'$owner\'\''
-                    sh 'hostname=$(terraform output curl)'
+                    sh 'hostname=$(terraform output publicIp)'
                 }
             }
         }
