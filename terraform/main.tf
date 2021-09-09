@@ -21,7 +21,7 @@ data "aws_ami" "packer_image" {
 
   filter {
     name   = "name"
-    values = ["Packer_ami"]
+    values = ["${var.stack}-ami"]
   }
 
   filter {
