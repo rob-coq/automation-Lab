@@ -7,8 +7,14 @@ variable region {
 variable access_key {
     description = "AWS access key"
 }
+
 variable secret_key {
     description = "AWS secret key"
+}
+
+variable "stack" {
+    description = "Name of the Stack"
+    default = "User0"
 }
 
 variable "owner" {
