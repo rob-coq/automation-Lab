@@ -1,5 +1,5 @@
 resource "aws_ami_copy" "dev_to_prod" {
-  name              = "PROD_Packer_AMI"
+  name              = "PROD_${var.stack}-ami"
   description       = "PROD AMI for Growler App"
   source_ami_id     = "${data.aws_ami.packer_image.id}"
   source_ami_region = "${var.region}"
@@ -16,7 +16,7 @@ data "aws_ami" "packer_image" {
 
   filter {
     name   = "name"
-    values = ["Packer_ami"]
+    values = ["${var.stack}-ami"]
   }
 
   filter {
