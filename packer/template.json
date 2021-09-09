@@ -16,7 +16,7 @@
         },
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "ami_name": "Packer_ami",
+        "ami_name": "{{user `AMI_name`}}-ami",
         "run_tags": {
           "OS_Version": "Ubuntu",
           "Release": "16.04"
