@@ -11,7 +11,7 @@ variable secret_key {
 }
 variable "stack" {
     description = "Name of the Stack"
-    default = "terraform"
+    default = "User0"
 }
 
 variable "vpc_cidr" {
