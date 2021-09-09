@@ -7,7 +7,7 @@ resource "aws_ami_copy" "dev_to_prod" {
   tags = {
     "OS_Version": "Ubuntu",
     "Release": "16.04",
-    "Env": "{{user `environment`}}"
+    "Env": "${var.environment}"
   }
 }
 
