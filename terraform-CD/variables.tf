@@ -17,6 +17,10 @@ variable "stack" {
     default = "User0"
 }
 
+variable "environment" {
+    description = "Environment of the AMI"
+}
+
 variable "owner" {
     description = "Owner of the AMI"
     default = "self"
